@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lottery Ticket</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family:sans-serif;
+           
+        }
+        .lottery{
+            margin: 180px auto;
+
+            background-color:#FF6347;
+            border: 1px solid #cccccc;
+             border-radius: 5px;
+             text-align: center;
+             width:700px;
+        }
+        h1 {
+            margin-top:20px;
+            text-align: center;
+            color: #333;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #results {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .modal-content {
+            background-color: #f8f9fa;
+        }
+
+        .modal-title {
+            color: #333;
+        }
+
+        .modal-body p {
+            font-size: 24px;
+            color: #007bff;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+        }
+        .show{
+            text-align: center;
+            margin:auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="lottery">
+        <h1>LOTTERY TICKET</h1>
+
+        <button onclick="showAllResults()" class="show">Click here to see the winner...</button><br><br>
+            <div id="results" style="display:none;">
+                <p>Result to console:</p>
+                <p id="consoleResult"></p>
+
+                <p>Result to the current page:</p>
+                <p id="currentPageResult"></p>
+
+                <p>Result to modal page:</p>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Click here to see the winner...</button>
+            </div>
+
+        <p id="bow"></p>
+    </div>
+    
+    <script>
+        const arr = [12345, 67890, 54321, 10987, 45678, 67547, 78906];
+
+        function showAllResults() {
+            const result = arr[Math.floor(Math.random() * arr.length)];
+
+            console.log(result);
+
+            document.getElementById("currentPageResult").textContent = result;
+
+            document.getElementById("draw").textContent = result;
+
+            document.getElementById("results").style.display = "block";
+        }
+    </script>
+
+    <div class="container">
+        <div class="modal" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Result</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>The winner is....</p>
+                        <p id="draw"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
